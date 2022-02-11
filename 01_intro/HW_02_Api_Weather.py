@@ -1,5 +1,5 @@
 # Зарегистрироваться на https://openweathermap.org/api и написать функцию,которая получает погоду в данный момент
-# для города, название которого получается через input. https://openweathermap.org/current
+# для города, название которого получается через input. https://openweathermap.org/current/
 
 
 import os
