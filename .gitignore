@@ -288,12 +288,14 @@ dmypy.json
 # Cython debug symbols
 cython_debug/
 
-*.pdf
 *.pptx
 *.txt
 *.csv
 
 .idea
 .DS_Store
+
 *.env
 *.yaml
+*.mp4
+*.flv
