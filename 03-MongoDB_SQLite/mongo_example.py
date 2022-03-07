@@ -1,7 +1,7 @@
 from pprint import pprint
 
 # pip install bson pymongo
-from bson import ObjectId
+# from bson import ObjectId
 from pymongo import ASCENDING, DESCENDING, MongoClient
 
 print()
@@ -102,11 +102,13 @@ with MongoClient(MONGO_HOST, MONGO_PORT) as client:
     # cursor = collection.find({
     #     "title": {"$ne": "Trump elections"}
     # })
+
     # $gt - > ; $gte - >= ; $lt - < ; $lte - <=
     # cursor = collection.find({
     #     "rating": {"$gt": 0},
     #     "count_of_comments": 4,
     # })
+
     # $and ; $or ; $not - logic operations
     # cursor = collection.find({
     #     # $and
@@ -137,75 +139,77 @@ with MongoClient(MONGO_HOST, MONGO_PORT) as client:
     # если данных немного, то можно считать их все в RAM
     # retrieved_data = list(cursor)
 
-    # 3. Update
-    collection.update_one(
-        {"_id": ObjectId("620a8bb4e4dafa81d06d8ab1")},
-        {
-            "$set": {
-                "title": "not Biden",
-                "rating_1": 90,
-            },
-            "$unset": {
-                "rating": None,
-            },
-        },
-    )
-    # title1 -> title1_1 ; title2 -> title2_1 - not this way
-    # title1 -> titleX ; title2 -> titleX
-    # collection.update_many(
-    #     {
-    #         # "rating": 70,
-    #         "rating": 71,
-    #     },
-    #     {
-    #         # "$inc": {"rating": 1},
-    #         "$inc": {"rating": -1},
-    #     }
-    # )
-    #
-    # UPSERT
-    collection.update_one(
-        {
-            "rating": 60,
-        },
-        {
-            "$set": {
-                "title": "no",
-                "rating_1": 99,
-            },
-        },
-        upsert=True,
-    )
-    collection.replace_one(
-        {
-            "rating": 60,
-        },
-        {
-            "title": "no",
-            "rating_1": 99,
-        },
-    )
-
-    cursor = collection.find(
-        {
-            "rating": 60,
-        },
-    )
     print_mongo_docs(cursor)
 
-    # 4. Delete
-    # ?
-    # collection.delete_one({})
-    # collection.delete_many()
+    # # 3. Update
+    # collection.update_one(
+    #     {"_id": ObjectId("620a8bb4e4dafa81d06d8ab1")},
+    #     {
+    #         "$set": {
+    #             "title": "not Biden",
+    #             "rating_1": 90,
+    #         },
+    #         "$unset": {
+    #             "rating": None,
+    #         },
+    #     },
+    # )
+    # # title1 -> title1_1 ; title2 -> title2_1 - not this way
+    # # title1 -> titleX ; title2 -> titleX
+    # # collection.update_many(
+    # #     {
+    # #         # "rating": 70,
+    # #         "rating": 71,
+    # #     },
+    # #     {
+    # #         # "$inc": {"rating": 1},
+    # #         "$inc": {"rating": -1},
+    # #     }
+    # # )
+    # #
+    # # UPSERT
+    # collection.update_one(
+    #     {
+    #         "rating": 60,
+    #     },
+    #     {
+    #         "$set": {
+    #             "title": "no",
+    #             "rating_1": 99,
+    #         },
+    #     },
+    #     upsert=True,
+    # )
+    # collection.replace_one(
+    #     {
+    #         "rating": 60,
+    #     },
+    #     {
+    #         "title": "no",
+    #         "rating_1": 99,
+    #     },
+    # )
     #
-    collection.delete_one(
-        {
-            "title": "no",
-            "rating_1": 99,
-        }
-    )
-    collection.delete_many(
-        {
-            "rating": {"$gt": 0},
-        }
-    )
+    # cursor = collection.find(
+    #     {
+    #         "rating": 60,
+    #     },
+    # )
+    # print_mongo_docs(cursor)
+    #
+    # # 4. Delete
+    # # ?
+    # # collection.delete_one({})
+    # # collection.delete_many()
+    # #
+    # collection.delete_one(
+    #     {
+    #         "title": "no",
+    #         "rating_1": 99,
+    #     }
+    # )
+    # collection.delete_many(
+    #     {
+    #         "rating": {"$gt": 0},
+    #     }
+    # )

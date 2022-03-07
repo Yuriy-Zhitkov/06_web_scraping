@@ -67,7 +67,6 @@ class KinopoiskScraper:
         return info
 
     def save_info_about_films(self):
-        # TODO
         # with open(...) as f:
         pass
 
